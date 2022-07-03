@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="description" content={{description}}>
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- default -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/light.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/custom.css')}}">
+
+    {% block css %} {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main">
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-copyright">&copy; 2022 rocket.cms, all rights reserved</div>
+        </div>
+    </footer>
+</body>
+
+{% block script %} {% endblock %}
+
+</html>
