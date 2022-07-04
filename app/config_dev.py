@@ -1,24 +1,38 @@
 import logging
 
-TIMEZONE = 'Europe/Paris'
+TIMEZONE = 'Asia/Jakarta'
 
 # DEBUG can only be set to True in a development environment for security reasons
 DEBUG = True
 
 # secret key for generating tokens
-SECRET_KEY = "rocket.cms"
+SECRET_KEY = "rocket.saas"
 
 # Admin credentials
 ADMIN_CREDENTIALS = ('admin', 'Pa$$word')
 
-# Configuration of a Gmail account for sending mails
-MAIL_SERVER = 'smtp.googlemail.com'
-MAIL_PORT = 465
-MAIL_USE_TLS = False
-MAIL_USE_SSL = True
-MAIL_USERNAME = 'flask.rocket'
-MAIL_PASSWORD = 'rocket123'
-ADMINS = ['flask.rocket@gmail.com']
+# Configuration of a Email account for sending and receiving mails
+MAIL_ACCOUNT = [
+    {
+        "default": {
+            "ACCOUNT": "rocket.saas@gmail.com",
+            "SERVER": "smtp.googlemail.com",
+            "IMAP_PORT": 993,
+            "SMTP_PORT": 465,
+            "USE_TLS": False,
+            "USE_SSL": True,
+            "USERNAME": "",
+            "PASSWORD": ""
+        }
+    }
+]
+
+# Configuration of a Database account
+DATABASE_ACCOUNT = [
+    {
+        
+    }
+]
 
 # Number of times a password is hashed
 BCRYPT_LOG_ROUNDS = 12
