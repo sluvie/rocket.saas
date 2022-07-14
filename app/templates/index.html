@@ -3,16 +3,25 @@
 {% block content %}
 
 <main>
-    <header>
-    </header>
+    <nav class="navbar navbar-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <a class="navbar-brand">{{ title }}</a>
+            <div class="form-inline">
+                <a href="/user/signin" class="btn btn-primary">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <header></header>
 
     <!-- information banner -->
     <section>
         <div class="container mt-2 mb-2">
-            <h1 class="banner-title">Decentralized, <br/>application</h1>
+            <h1 class="banner-title">Decentralized, <br />application</h1>
             <p>The main objective of decentralised was to involve peoples' participation.</p>
 
-            <button class="btn btn-success">Get Started</button>
+            <a href="/user/signup" class="btn btn-primary">Get Started</a>
         </div>
     </section>
 

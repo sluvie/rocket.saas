@@ -152,5 +152,15 @@ p {
     font-weight: bold;
 }
 
-.signin-area-signup {
+
+/* navbar */
+.navbar {
+    border: 0;
+	border-radius: 0;
+}
+
+
+/* messages */
+.messages-block {
+    padding: 2px;
 }
