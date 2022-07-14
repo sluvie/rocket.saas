@@ -6,6 +6,7 @@ from flask import (
     redirect,
     url_for
 )
+import flask_login
 from app import app
 
 @app.route('/', methods = ['GET'])
@@ -15,5 +16,6 @@ def index():
 
 
 @app.route('/home', methods = ['GET'])
+@flask_login.login_required
 def home():
-    return render_template('home.html', title="main menu")
+    return render_template('home.html', title="rocket.saas")

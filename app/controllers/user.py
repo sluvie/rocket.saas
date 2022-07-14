@@ -8,10 +8,14 @@ from flask import (
     url_for,
     flash
 )
+import flask_login
+
 from app import app
 from app.forms import user as user_forms
 import json
 from json import dumps
+
+from app.libraries.session import usersession as USession
 
 # Create a user blueprint
 userbp = Blueprint('userbp', __name__, url_prefix='/user')
@@ -38,10 +42,28 @@ def signin():
 
     # form submit
     if request.method=="POST" and form.validate():
-        if form.email.data == "demo@rocket.com" and form.email.data == "demodemo":
-            return redirect(url_for('index'))
+        if form.email.data == "demo@rocket.com" and form.password.data == "demodemo":
+            # process the login manager session
+            user = USession.User()
+            # TODO: place your user / account data
+            user.name = form.email.data
+            user.email = form.email.data
+
+            # save to session
+            session["usersession"] = user.__dict__
+            flask_login.login_user(user)
+            return redirect(url_for('home'))
         else:
             flash('Invalid account.', 'negative')
             return redirect(url_for('userbp.signin'))
 
     return render_template('user/signin.html', form=form, title='Sign In')
+
+
+@userbp.route('/signout')
+@flask_login.login_required
+def signout():
+    flask_login.logout_user()
+    session["usersession"] = None
+    flash('Succesfully signed out.', 'positive')
+    return redirect(url_for('index'))
