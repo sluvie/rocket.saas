@@ -30,7 +30,13 @@ MAIL_ACCOUNT = [
 # Configuration of a Database account
 DATABASE_ACCOUNT = [
     {
-        
+        "sqlserver": {
+            "SERVER": "10.10.10.10",
+            "PORT": 1443,
+            "username": "",
+            "password": "",
+            "database": "",
+        }
     }
 ]
 

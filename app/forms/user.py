@@ -1,8 +1,24 @@
 from flask_wtf import Form
-from wtforms import TextField, PasswordField
-from wtforms.validators import (Required, Length, Email, ValidationError,
-                                EqualTo)
+from wtforms import StringField, PasswordField
+import wtforms.validators as validators
 
-class Login(Form):
-    email = TextField(validators=[Required(), Email()], description="Email address")
-    
+
+class SignUp(Form):
+    first_name = StringField(
+        'Name', validators=[validators.input_required(), validators.length(min=2)])
+    last_name = StringField('Surname', validators=[
+                            validators.input_required(), validators.length(min=2)])
+    phone = StringField('Phone number', validators=[
+                        validators.input_required(), validators.length(min=6)])
+    email = StringField('Email address', validators=[
+                        validators.input_required(), validators.email()])
+    password = PasswordField('Password', validators=[
+        validators.input_required(), validators.length(min=6), validators.equal_to('confirm', 'Passwords must match.')])
+    confirm = PasswordField('Confirm password')
+
+
+class SignIn(Form):
+    email = StringField('Email address', validators=[
+                        validators.input_required(), validators.email()])
+    password = PasswordField('Password', validators=[
+        validators.input_required(), validators.length(min=6)])

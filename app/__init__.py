@@ -11,4 +11,6 @@ from app.logger_setup import logger
 # Set secret key
 app.secret_key = app.config['SECRET_KEY']
 
-from app.controllers import  *
+# Import the controllers
+from app.controllers import *
+app.register_blueprint(user.userbp)
