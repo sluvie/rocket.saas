@@ -34,6 +34,10 @@ def signup():
 
 @userbp.route('/signin', methods=['GET', 'POST'])
 def signin():
+    # if already login, redirect to home
+    if 'usersession' in session and session["usersession"] is not None:
+        return redirect(url_for('home'))
+
     form = user_forms.SignIn(request.form)
 
     # initialize sample input
@@ -67,3 +71,15 @@ def signout():
     session["usersession"] = None
     flash('Succesfully signed out.', 'positive')
     return redirect(url_for('index'))
+
+
+@userbp.route('/profile')
+@flask_login.login_required
+def profile():
+    return render_template('user/profile.html', title='Profile')
+
+
+@userbp.route('/browse')
+@flask_login.login_required
+def browse():
+    return render_template('user/browse.html', title='Users')

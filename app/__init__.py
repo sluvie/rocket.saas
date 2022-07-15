@@ -1,6 +1,6 @@
 from app.libraries.session.usersession import User
 from flask import Flask ## import Flask dari package flask
-from flask import session
+from flask import session, redirect, url_for
 import flask_login
 
 app = Flask(__name__)
@@ -42,4 +42,4 @@ def request_loader(request):
 
 @login_manager.unauthorized_handler
 def unauthorized_handler():
-    return 'Unauthorized', 401
+    return redirect(url_for('userbp.signin'))
